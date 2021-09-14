@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    @apply min-h-screen;
+    @apply bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100;
+  }
+
+  #___gatsby {
+    @apply h-screen;
+  }
+}
