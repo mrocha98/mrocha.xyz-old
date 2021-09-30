@@ -1,0 +1,175 @@
+backend:
+  name: github
+  repo: mrocha98/mrocha.xyz
+  branch: main
+
+locale: pt
+site_url: https://mrocha.xyz
+publish_mode: editorial_workflow
+media_folder: static/assets/img
+public_folder: /assets/img
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+
+collections:
+  - name: tags
+    label: Tags
+    label_singular: tag
+    folder: content/tags
+    create: true
+    slug: '{{slug}}'
+    identifier_field: 'tagName'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'tag',
+          required: true,
+        }
+      - {
+          label: 'Nome',
+          name: 'tagName',
+          widget: 'string',
+          required: true,
+          hint: 'entre 3 a 27 caracteres.',
+          pattern:
+            [
+              '^[a-z]{3,27}$',
+              'Sem símbolos ou números. Apenas letras minúsculas. Deve ter entre 3 a 27 caracteres.',
+            ],
+        }
+      - {
+          label: 'Cor',
+          name: 'tagColor',
+          widget: 'object',
+          required: true,
+          summary: 'BG: {{fields.background}} - TXT: {{fields.text}}',
+          hint: 'sugestão de paleta: <https://tailwindcss.com/docs/customizing-colors#color-palette-reference>',
+          fields:
+            [
+              {
+                label: 'Cor de fundo',
+                name: 'background',
+                widget: 'color',
+                enableAlpha: true,
+                allowInput: true,
+                default: '#e4e4e7',
+              },
+              {
+                label: 'Cor do texto',
+                name: 'text',
+                widget: 'color',
+                enableAlpha: true,
+                allowInput: true,
+                default: '#18181b',
+              },
+            ],
+        }
+
+  - name: posts
+    label: Posts
+    label_singular: post
+    folder: content/posts
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    identifier_field: 'postTitle'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'post',
+          required: true,
+        }
+      - {
+          label: 'Data de publicação',
+          name: 'postDate',
+          widget: 'datetime',
+          format: 'YYYY-MM-DD hh:mm:ss',
+          required: true,
+        }
+      - {
+          label: 'Título',
+          name: 'postTitle',
+          widget: 'string',
+          hint: 'entre 50 a 60 caracteres (recomendado). Referência: <https://moz.com/learn/seo/title-tag>',
+          required: true,
+        }
+      - {
+          label: 'Descrição',
+          name: 'postDescription',
+          widget: 'text',
+          pattern: ['^.{50,160}$', 'Deve ter entre 50 a 160 caracteres'],
+          hint: 'entre 50 a 160 caracteres. Referência: <https://moz.com/learn/seo/meta-description>',
+          required: false,
+        }
+      - {
+          label: 'Thumbnail',
+          name: 'postThumbnail',
+          widget: 'image',
+          allow_multiple: false,
+          required: false,
+        }
+      - {
+          label: 'Texto alternativo',
+          name: 'postAltText',
+          widget: 'string',
+          hint: 'Utilizado por leitores de tela e quando a thumbnail não carregar. Considere como obrigatório caso tenha definido uma thumbnail.',
+          default: '',
+          required: false,
+        }
+      - {
+          label: 'Destaque',
+          name: 'postIsFeatured',
+          widget: 'boolean',
+          required: false,
+        }
+      - {
+          label: 'Tags',
+          label_singular: 'tag',
+          name: 'postTags',
+          widget: 'relation',
+          multiple: true,
+          collection: 'tags',
+          search_fields: ['tagName'],
+          value_field: 'tagName',
+          default: [],
+          required: false,
+        }
+      - {
+          label: 'Conteúdo',
+          name: 'postBody',
+          widget: 'markdown',
+          required: true,
+          buttons:
+            [
+              'bold',
+              'italic',
+              'code',
+              'link',
+              'heading-two',
+              'heading-three',
+              'heading-four',
+              'heading-five',
+              'heading-six',
+              'quote',
+              'bulleted-list',
+              'numbered-list',
+            ],
+        }
+      - {
+          label: 'Referências',
+          label_singular: 'referência',
+          name: 'postReferences',
+          widget: 'list',
+          default: [],
+          required: false,
+          summary: '{{fields.title}} - {{fields.link}}',
+          fields:
+            [
+              { label: 'Título', name: 'title', widget: 'string', default: '' },
+              { label: 'Link', name: 'link', widget: 'string', default: '' },
+            ],
+        }
