@@ -19,9 +19,9 @@ collections:
     folder: content/posts
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    identifier_field: 'postTitle'
-    sortable_fields: ['postDate', 'commit_date', 'postTitle', 'postCategory']
-    summary: '[{{postCategory}}] {{postTitle}}'
+    identifier_field: 'title'
+    sortable_fields: ['postDate', 'commit_date', 'title', 'postCategory']
+    summary: '[{{postCategory}}] {{title}}'
     fields:
       - {
           label: 'Template Key',
@@ -31,17 +31,17 @@ collections:
           required: true,
         }
       - {
+          label: 'Título',
+          name: 'title',
+          widget: 'string',
+          hint: 'entre 50 a 60 caracteres (recomendado). Referência: <https://moz.com/learn/seo/title-tag>',
+          required: true,
+        }
+      - {
           label: 'Data de publicação',
           name: 'postDate',
           widget: 'datetime',
           format: 'YYYY-MM-DD hh:mm:ss',
-          required: true,
-        }
-      - {
-          label: 'Título',
-          name: 'postTitle',
-          widget: 'string',
-          hint: 'entre 50 a 60 caracteres (recomendado). Referência: <https://moz.com/learn/seo/title-tag>',
           required: true,
         }
       - {
@@ -91,7 +91,9 @@ collections:
           multiple: true,
           collection: 'tags',
           search_fields: ['tagName'],
-          value_field: 'tagName',
+          display_fields: ['tagName'],
+          # JSON.stringfy result of tag fields
+          value_field: '\"{\"name\":\"{{tagName}}\",\"color\":{\"background\":\"{{tagColor.background}}\",\"text\":\"{{tagColor.text}}\"}}\"',
           default: [],
           required: false,
         }

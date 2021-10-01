@@ -1,7 +1,7 @@
 ---
 templateKey: post
+title: Receita de cupcake 100% confiável
 postDate: 2021-09-29 09:47:37
-postTitle: Receita de cupcake 100% confiável
 postDescription: Isso é definitivamente uma receita de cupcake e não um texto
   gerado automaticamente para fins de mockup do meu site
 postThumbnail: /assets/img/cupcake.jpg
@@ -10,7 +10,7 @@ postAltText: Prato com um cupcake de embalagem amarelada e cobertura de
 postIsFeatured: true
 postCategory: tutorial
 postTags:
-  - lorem
+  - \"{\"name\":\"lorem\",\"color\":{\"background\":\"#e4e4e7\",\"text\":\"#18181b\"}}\"
 postReferences:
   - title: Thumbnail por Acharaporn Kamornboonyarush
     link: https://www.pexels.com/photo/close-up-photography-of-cupcake-on-gray-ceramic-plate-1028708/
