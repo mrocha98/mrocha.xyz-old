@@ -13,61 +13,6 @@ slug:
   clean_accents: true
 
 collections:
-  - name: tags
-    label: Tags
-    label_singular: tag
-    folder: content/tags
-    create: true
-    slug: '{{slug}}'
-    identifier_field: 'tagName'
-    fields:
-      - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'tag',
-          required: true,
-        }
-      - {
-          label: 'Nome',
-          name: 'tagName',
-          widget: 'string',
-          required: true,
-          hint: 'entre 3 a 27 caracteres.',
-          pattern:
-            [
-              '^[a-z]{3,27}$',
-              'Sem símbolos ou números. Apenas letras minúsculas. Deve ter entre 3 a 27 caracteres.',
-            ],
-        }
-      - {
-          label: 'Cor',
-          name: 'tagColor',
-          widget: 'object',
-          required: true,
-          summary: 'BG: {{fields.background}} - TXT: {{fields.text}}',
-          hint: 'sugestão de paleta: <https://tailwindcss.com/docs/customizing-colors#color-palette-reference>',
-          fields:
-            [
-              {
-                label: 'Cor de fundo',
-                name: 'background',
-                widget: 'color',
-                enableAlpha: true,
-                allowInput: true,
-                default: '#e4e4e7',
-              },
-              {
-                label: 'Cor do texto',
-                name: 'text',
-                widget: 'color',
-                enableAlpha: true,
-                allowInput: true,
-                default: '#18181b',
-              },
-            ],
-        }
-
   - name: posts
     label: Posts
     label_singular: post
@@ -75,6 +20,8 @@ collections:
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     identifier_field: 'postTitle'
+    sortable_fields: ['postDate', 'commit_date', 'postTitle', 'postCategory']
+    summary: '[{{postCategory}}] {{postTitle}}'
     fields:
       - {
           label: 'Template Key',
@@ -121,10 +68,20 @@ collections:
           required: false,
         }
       - {
-          label: 'Destaque',
+          label: 'Em destaque',
           name: 'postIsFeatured',
           widget: 'boolean',
           required: false,
+        }
+      - {
+          label: 'Categoria',
+          name: 'postCategory',
+          widget: 'relation',
+          multiple: false,
+          collection: 'categories',
+          search_fields: ['categoryName'],
+          value_field: 'categoryName',
+          required: true,
         }
       - {
           label: 'Tags',
@@ -139,8 +96,22 @@ collections:
           required: false,
         }
       - {
+          label: 'Referências',
+          label_singular: 'referência',
+          name: 'postReferences',
+          widget: 'list',
+          default: [],
+          required: false,
+          summary: '{{fields.title}} - {{fields.link}}',
+          fields:
+            [
+              { label: 'Título', name: 'title', widget: 'string', default: '' },
+              { label: 'Link', name: 'link', widget: 'string', default: '' },
+            ],
+        }
+      - {
           label: 'Conteúdo',
-          name: 'postBody',
+          name: 'body',
           widget: 'markdown',
           required: true,
           buttons:
@@ -159,17 +130,86 @@ collections:
               'numbered-list',
             ],
         }
+
+  - name: categories
+    label: Categorias
+    label_singular: categoria
+    folder: content/categories
+    create: true
+    identifier_field: 'categoryName'
+    slug: '{{templateKey}}-{{categoryName}}'
+    fields:
       - {
-          label: 'Referências',
-          label_singular: 'referência',
-          name: 'postReferences',
-          widget: 'list',
-          default: [],
-          required: false,
-          summary: '{{fields.title}} - {{fields.link}}',
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'category',
+          required: true,
+        }
+      - {
+          label: 'Nome',
+          name: 'categoryName',
+          widget: 'string',
+          required: true,
+          hint: 'entre 3 a 16 caracteres. kebab-case.',
+          pattern:
+            [
+              '^[a-z-]{3,}$',
+              'Apenas letras minúsculas e traços. Deve ter entre 3 a 16 caracteres.',
+            ],
+        }
+
+  - name: tags
+    label: Tags
+    label_singular: tag
+    folder: content/tags
+    create: true
+    identifier_field: 'tagName'
+    slug: '{{templateKey}}-{{tagName}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'tag',
+          required: true,
+        }
+      - {
+          label: 'Nome',
+          name: 'tagName',
+          widget: 'string',
+          required: true,
+          hint: 'entre 3 a 27 caracteres. kebab-case.',
+          pattern:
+            [
+              '^[a-z-]{3,27}$',
+              'Apenas letras minúsculas e traços. Deve ter entre 3 a 27 caracteres.',
+            ],
+        }
+      - {
+          label: 'Cor',
+          name: 'tagColor',
+          widget: 'object',
+          required: true,
+          summary: 'BG: {{fields.background}} - TXT: {{fields.text}}',
+          hint: 'sugestão de paleta: <https://tailwindcss.com/docs/customizing-colors#color-palette-reference>',
           fields:
             [
-              { label: 'Título', name: 'title', widget: 'string', default: '' },
-              { label: 'Link', name: 'link', widget: 'string', default: '' },
+              {
+                label: 'Cor de fundo',
+                name: 'background',
+                widget: 'color',
+                enableAlpha: true,
+                allowInput: true,
+                default: '#e4e4e7',
+              },
+              {
+                label: 'Cor do texto',
+                name: 'text',
+                widget: 'color',
+                enableAlpha: true,
+                allowInput: true,
+                default: '#18181b',
+              },
             ],
         }
