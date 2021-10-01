@@ -92,8 +92,7 @@ collections:
           collection: 'tags',
           search_fields: ['tagName'],
           display_fields: ['tagName'],
-          # JSON.stringfy result of tag fields
-          value_field: '\"{\"name\":\"{{tagName}}\",\"color\":{\"background\":\"{{tagColor.background}}\",\"text\":\"{{tagColor.text}}\"}}\"',
+          value_field: '{{tagName}}',
           default: [],
           required: false,
         }
@@ -186,32 +185,5 @@ collections:
             [
               '^[a-z-]{3,27}$',
               'Apenas letras minúsculas e traços. Deve ter entre 3 a 27 caracteres.',
-            ],
-        }
-      - {
-          label: 'Cor',
-          name: 'tagColor',
-          widget: 'object',
-          required: true,
-          summary: 'BG: {{fields.background}} - TXT: {{fields.text}}',
-          hint: 'sugestão de paleta: <https://tailwindcss.com/docs/customizing-colors#color-palette-reference>',
-          fields:
-            [
-              {
-                label: 'Cor de fundo',
-                name: 'background',
-                widget: 'color',
-                enableAlpha: true,
-                allowInput: true,
-                default: '#e4e4e7',
-              },
-              {
-                label: 'Cor do texto',
-                name: 'text',
-                widget: 'color',
-                enableAlpha: true,
-                allowInput: true,
-                default: '#18181b',
-              },
             ],
         }

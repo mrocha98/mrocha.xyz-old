@@ -10,8 +10,7 @@ postAltText: Prato com um cupcake de embalagem amarelada e cobertura de
 postIsFeatured: true
 postCategory: tutorial
 postTags:
-  - \"{\"name\":\"lorem\",\"color\":{\"background\":\"#e4e4e7\",\"text\":\"#18181b\"}}\"
-  - \"{\"name\":\"reactjs\",\"color\":{\"background\":\"#20232a\",\"text\":\"#61dafb\"}}\"
+  - lorem
 postReferences:
   - title: Thumbnail por Acharaporn Kamornboonyarush
     link: https://www.pexels.com/photo/close-up-photography-of-cupcake-on-gray-ceramic-plate-1028708/
