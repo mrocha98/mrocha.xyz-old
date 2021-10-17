@@ -6,8 +6,8 @@ backend:
 locale: pt
 site_url: https://mrocha.xyz
 publish_mode: editorial_workflow
-media_folder: static/assets/img
-public_folder: /assets/img
+media_folder: static/assets/uploads
+public_folder: /assets/uploads
 slug:
   encoding: 'ascii'
   clean_accents: true
@@ -19,9 +19,9 @@ collections:
     folder: content/posts
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    identifier_field: 'title'
-    sortable_fields: ['postDate', 'commit_date', 'title', 'postCategory']
-    summary: '[{{postCategory}}] {{title}}'
+    identifier_field: postTitle
+    sortable_fields: ['postDate', 'commit_date', 'postTitle', 'postCategory']
+    summary: '[{{postCategory}}] {{postTitle}} - {{postDate}}'
     fields:
       - {
           label: 'Template Key',
@@ -32,7 +32,7 @@ collections:
         }
       - {
           label: 'Título',
-          name: 'title',
+          name: 'postTitle',
           widget: 'string',
           hint: 'entre 50 a 60 caracteres (recomendado). Referência: <https://moz.com/learn/seo/title-tag>',
           required: true,
@@ -138,7 +138,7 @@ collections:
     folder: content/categories
     create: true
     identifier_field: 'categoryName'
-    slug: '{{templateKey}}-{{categoryName}}'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - {
           label: 'Template Key',
@@ -166,7 +166,7 @@ collections:
     folder: content/tags
     create: true
     identifier_field: 'tagName'
-    slug: '{{templateKey}}-{{tagName}}'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - {
           label: 'Template Key',

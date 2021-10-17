@@ -1,0 +1,5 @@
+@layer components {
+  .prose-spacing {
+    @apply px-4 lg:px-0 md:mx-auto;
+  }
+}

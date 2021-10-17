@@ -1,8 +1,18 @@
 {
   "recommendations": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
     "austenc.tailwind-docs",
-    "graphql.vscode-graphql"
+    "clinyong.vscode-css-modules",
+    "csstools.postcss",
+    "graphql.vscode-graphql",
+    "mikestead.dotenv",
+    "redhat.vscode-yaml",
+    "wix.vscode-import-cost",
+    "formulahendry.auto-complete-tag",
+    "aaron-bond.better-comments",
+    "naumovs.color-highlight"
   ]
 }

@@ -1,0 +1,32 @@
+@layer base {
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    @apply min-h-screen;
+    @apply bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100;
+  }
+
+  #___gatsby {
+    @apply h-screen;
+  }
+
+  svg {
+    @apply inline-block w-[15px] h-[15px];
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.green.700') theme('colors.green.200');
+  }
+
+  *::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  *::-webkit-scrollbar-track {
+    @apply bg-green-200;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-green-700 hover:bg-green-500 transition-colors;
+  }
+}

@@ -1,15 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import './custom/base.css';
 
-@layer base {
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    @apply min-h-screen;
-    @apply bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100;
-  }
+@import 'tailwindcss/components';
+@import './custom/components.css';
 
-  #___gatsby {
-    @apply h-screen;
-  }
-}
+@import 'tailwindcss/utilities';

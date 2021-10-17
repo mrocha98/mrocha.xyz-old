@@ -1,10 +1,10 @@
 ---
 templateKey: post
-title: Receita de cupcake 100% confiável
+postTitle: Receita de cupcake 100% confiável
 postDate: 2021-09-29 09:47:37
 postDescription: Isso é definitivamente uma receita de cupcake e não um texto
   gerado automaticamente para fins de mockup do meu site
-postThumbnail: /assets/img/cupcake.jpg
+postThumbnail: /assets/uploads/cupcake.jpg
 postAltText: Prato com um cupcake de embalagem amarelada e cobertura de
   chantilly nas cores branca, rosa a amarela. Flores artificiais ao fundo.
 postIsFeatured: true

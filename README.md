@@ -47,8 +47,8 @@ Open your favorite browser and enjoy this amazing website!
 
 This project has two licenses:
 
-- [Creative Commons Attribution-ShareAlike 4.0 International](https://github.com/mrocha98/mrocha.xyz/blob/main/LICENSE-CC-BY-SA-4.0) for the content in markdown files
-- [GNU General Public License](https://github.com/mrocha98/mrocha.xyz/blob/main/LICENSE-GPL-3.0-or-later) for the source code
+- [Creative Commons Attribution-ShareAlike 4.0 International](https://github.com/mrocha98/mrocha.xyz/blob/main/LICENSE-CC-BY-SA-4.0.txt) for the content in markdown files
+- [GNU General Public License](https://github.com/mrocha98/mrocha.xyz/blob/main/LICENSE-GPL-3.0-or-later.txt) for the source code
 
 Both licenses are copyleft and viral, which means you is free to do basically anything, as long you follow the license conditions and keep your modifications under the same or a similar license.
 

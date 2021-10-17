@@ -1,8 +1,20 @@
+require('dotenv').config()
+const colors = require('tailwindcss/colors')
+const { __DEV__, __PROD__ } = require('./utils/env')
+
+const siteUrl = process.env.SITE_META_SITE_URL || 'https://mrocha.xyz'
+const title = process.env.SITE_META_TITLE || 'mrocha.xyz'
+const description =
+  process.env.SITE_META_DESCRIPTION || 'Portfólio e blog técnico.'
+
+/** @type {import('./src/hooks/useSiteMetadata').SiteMetadata} */
 const siteMetadata = {
-  siteUrl: 'https://mrocha.xyz',
-  title: 'mrocha.xyz',
+  siteUrl,
+  title,
+  description,
 }
 
+/** @type {import('gatsby').GatsbyConfig['plugins']} */
 const plugins = [
   {
     resolve: 'gatsby-plugin-netlify-cms',
@@ -11,18 +23,18 @@ const plugins = [
       htmlFavicon: 'src/images/admin-favicon.ico',
     },
   },
+  __DEV__ && 'gatsby-plugin-dts-css-modules',
   'gatsby-plugin-postcss',
-  'gatsby-plugin-dts-css-modules',
   'gatsby-plugin-image',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
-      name: 'assets',
-      path: `./static/assets/`,
+      name: 'uploads',
+      path: './static/assets/uploads/',
     },
-    __key: 'assets',
+    __key: 'uploads',
   },
   {
     resolve: 'gatsby-source-filesystem',
@@ -67,7 +79,27 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
+      name: siteMetadata.title,
+      short_name: siteMetadata.title,
+      description: siteMetadata.description,
+      lang: 'pt-BR',
+      start_url: '/',
+      background_color: colors.gray[900],
+      theme_color: colors.emerald[700],
+      display: 'minimal-ui',
+      cache_busting_mode: 'none',
       icon: 'src/images/icon.png',
+      icon_options: {
+        purpose: `any maskable`,
+      },
+    },
+  },
+  __PROD__ && {
+    resolve: 'gatsby-plugin-offline',
+    options: {
+      workboxConfig: {
+        globPatterns: ['**/icons/*', '**/assets/uploads/*'],
+      },
     },
   },
   'gatsby-plugin-sharp',
@@ -76,18 +108,14 @@ const plugins = [
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
-        {
-          resolve: 'gatsby-remark-relative-images',
-          options: {
-            staticFolderName: 'static',
-          },
-        },
+        'gatsby-plugin-netlify-cms-paths',
         {
           resolve: 'gatsby-remark-images',
           options: {
             maxWidth: 1280,
             quality: 75,
-            backgroundColor: '#3F3F46',
+            linkImagesToOriginal: false,
+            withWebp: true,
           },
         },
         'gatsby-remark-lazy-load',
@@ -111,26 +139,15 @@ const plugins = [
     },
   },
   {
-    resolve: 'gatsby-omni-font-loader',
-    options: {
-      preconnect: ['https://fonts.gstatic.com'],
-      web: [
-        {
-          name: 'Raleway',
-          file: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap',
-        },
-      ],
-    },
-  },
-  {
     resolve: 'gatsby-plugin-use-dark-mode',
     options: {
       classNameDark: 'dark',
       classNameLight: 'light',
-      minify: true,
+      minify: __PROD__,
     },
   },
-]
+  __PROD__ && 'gatsby-plugin-netlify',
+].filter(Boolean)
 
 module.exports = {
   siteMetadata,
