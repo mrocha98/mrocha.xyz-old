@@ -71,6 +71,14 @@ const plugins = [
   {
     resolve: 'gatsby-source-filesystem',
     options: {
+      name: 'projects',
+      path: `./content/projects`,
+    },
+    __key: 'projects',
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
       name: 'tags',
       path: `./content/tags`,
     },

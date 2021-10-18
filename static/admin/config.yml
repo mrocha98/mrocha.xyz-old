@@ -187,3 +187,169 @@ collections:
               'Apenas letras minúsculas e traços. Deve ter entre 3 a 27 caracteres.',
             ],
         }
+
+  - name: projects
+    label: Projetos
+    label_singular: projeto
+    folder: content/projects
+    create: true
+    identifier_field: projectTitle
+    fields:
+      - {
+          label: 'Título',
+          name: 'projectTitle',
+          widget: 'string',
+          required: true,
+        }
+      - {
+          label: 'Tipo',
+          name: 'projectType',
+          widget: 'select',
+          required: true,
+          options: ['acadêmico', 'freelance', 'open-source', 'trabalho formal'],
+          default: 'freelance',
+        }
+      - {
+          label: 'Data de criação',
+          name: 'projectCreationDate',
+          widget: 'datetime',
+          format: 'YYYY-MM-DD hh:mm:ss',
+          required: true,
+        }
+      - {
+          label: 'Tecnologias',
+          label_singular: 'tecnologia',
+          name: 'projectTechs',
+          widget: 'list',
+          multiple: true,
+          min: 1,
+          summary: '{{fields.name}}',
+          fields:
+            [
+              {
+                label: 'Nome',
+                name: 'name',
+                widget: 'select',
+                options:
+                  [
+                    'javascript',
+                    'typescript',
+                    'python',
+                    'java',
+                    'reactjs',
+                    'angularjs',
+                    'sass',
+                    'postcss',
+                    'tailwindcss',
+                    'bootstrap',
+                    'styled-components',
+                    'material-ui',
+                    'gatsbyjs',
+                    'nextjs',
+                    'nodejs',
+                    'mongodb',
+                    'storybook',
+                    'graphql',
+                    'jest',
+                    'testing-library',
+                    'godot engine',
+                  ],
+                required: true,
+              },
+              {
+                label: 'Ícone',
+                name: 'icon',
+                widget: 'image',
+                allow_multiple: false,
+                required: true,
+              },
+              {
+                label: 'Créditos do ícone',
+                name: 'iconCredits',
+                widget: 'markdown',
+                required: false,
+                buttons: ['bold', 'italic', 'link'],
+                editor_components: [],
+              },
+            ],
+        }
+      - {
+          label: 'Links',
+          name: 'links',
+          widget: 'object',
+          required: false,
+          summary: '{{fields.app}} | {{fields.sourceCode}}',
+          fields:
+            [
+              {
+                label: 'Aplicação',
+                name: 'app',
+                widget: 'string',
+                required: false,
+              },
+              {
+                label: 'Código Fonte',
+                name: 'sourceCode',
+                widget: 'string',
+                required: false,
+              },
+            ],
+        }
+      - {
+          label: 'Licença',
+          name: 'license',
+          widget: 'object',
+          required: false,
+          summary: '{{fields.name}} - {{fields.spdx}}',
+          hint: 'Preencher os campos com os valores presentes no link: <https://spdx.org/licenses/>',
+          fields:
+            [
+              {
+                label: 'Nome',
+                name: 'name',
+                widget: 'string',
+                hint: 'Nome completo da licença',
+                required: false,
+              },
+              {
+                label: 'SPDX',
+                name: 'spdx',
+                widget: 'string',
+                hint: 'Sigla identificadora',
+                required: false,
+              },
+            ],
+        }
+      - {
+          label: 'Imagens',
+          name: 'images',
+          widget: 'list',
+          required: false,
+          multiple: true,
+          summary: '{{fields.alt}}',
+          fields:
+            [
+              {
+                label: 'src',
+                name: 'src',
+                widget: 'image',
+                allow_multiple: false,
+                required: false,
+              },
+              { label: 'alt', name: 'alt', widget: 'string', required: false },
+              {
+                label: 'Em destaque',
+                name: 'isFeatured',
+                widget: boolean,
+                required: false,
+              },
+            ],
+        }
+      - {
+          label: 'Conteúdo',
+          name: 'body',
+          widget: 'markdown',
+          required: true,
+          buttons: ['bold', 'italic', 'link', 'bulleted-list', 'numbered-list'],
+          editor_components: [],
+        }
