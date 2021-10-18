@@ -263,14 +263,6 @@ collections:
                 allow_multiple: false,
                 required: true,
               },
-              {
-                label: 'Créditos do ícone',
-                name: 'iconCredits',
-                widget: 'markdown',
-                required: false,
-                buttons: ['bold', 'italic', 'link'],
-                editor_components: [],
-              },
             ],
         }
       - {

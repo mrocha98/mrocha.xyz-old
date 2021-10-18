@@ -5,9 +5,7 @@ projectCreationDate: 2021-10-17 11:27:56
 projectTechs:
   - name: nodejs
     icon: /assets/uploads/icon-nodejs.png
-    iconCredits: "Disponível em: <https://icons8.com/icons/set/nodejs>"
   - name: typescript
-    iconCredits: "Disponível em: <https://icons8.com/icons/set/typescript>"
     icon: /assets/uploads/icon-typescript.png
 links:
   app: https://github.com/mrocha98/antenas-front#readme
