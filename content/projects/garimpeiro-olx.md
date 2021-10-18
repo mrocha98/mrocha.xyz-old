@@ -16,6 +16,7 @@ license:
 images:
   - src: /assets/uploads/help.png
     alt: listagem de comandos
+    isFeatured: true
   - src: /assets/uploads/demo-nenhuma-oferta-encontrada.png
     alt: programa em looping enquanto não encontra ofertas
   - src: /assets/uploads/demo-notificacao-log.png
