@@ -21,7 +21,7 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     identifier_field: postTitle
     sortable_fields: ['postDate', 'commit_date', 'postTitle', 'postCategory']
-    summary: '[{{postCategory}}] {{postTitle}} - {{postDate}}'
+    summary: '[{{postCategory}}] {{postTitle}}'
     fields:
       - {
           label: 'Template Key',
@@ -194,6 +194,9 @@ collections:
     folder: content/projects
     create: true
     identifier_field: projectTitle
+    sortable_fields:
+      ['projectCreationDate', 'commit_date', 'projectTitle', 'projectType']
+    summary: '[{{projectType}}] {{projectTitle}}'
     fields:
       - {
           label: 'Título',
