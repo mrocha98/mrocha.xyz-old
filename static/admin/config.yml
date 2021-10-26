@@ -348,3 +348,162 @@ collections:
           buttons: ['bold', 'italic', 'link', 'bulleted-list', 'numbered-list'],
           editor_components: [],
         }
+
+  - name: uniques
+    label: Arquivos Únicos
+    label_singular: arquivo único
+    files:
+      - name: about
+        label: Sobre
+        file: content/unique/about.md
+        identifier_field: templateKey
+        fields:
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'sobre',
+              required: true,
+            }
+          - {
+              label: 'É um arquivo único?',
+              name: 'isUnique',
+              widget: 'hidden',
+              default: true,
+              required: true,
+            }
+          - {
+              label: 'Bloco',
+              name: 'uniqueBlock',
+              widget: 'object',
+              required: true,
+              fields:
+                [
+                  {
+                    label: 'Foto',
+                    name: 'photo',
+                    widget: 'image',
+                    allow_multiple: false,
+                    required: true,
+                  },
+                  {
+                    label: 'Social',
+                    name: 'social',
+                    widget: 'object',
+                    required: true,
+                    fields:
+                      [
+                        {
+                          label: 'Github',
+                          name: 'github',
+                          widget: 'string',
+                          required: true,
+                        },
+                        {
+                          label: 'Linkedin',
+                          name: 'linkedin',
+                          widget: 'string',
+                          required: true,
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: 'Conteúdo',
+              name: 'body',
+              widget: 'markdown',
+              required: true,
+              buttons:
+                ['bold', 'italic', 'link', 'bulleted-list', 'numbered-list'],
+              editor_components: [],
+            }
+
+      - name: licenses
+        label: Licenças
+        file: content/unique/licenses.md
+        identifier_field: templateKey
+        fields:
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'sobre',
+              required: true,
+            }
+          - {
+              label: 'É um arquivo único?',
+              name: 'isUnique',
+              widget: 'hidden',
+              default: true,
+              required: true,
+            }
+          - {
+              label: 'Bloco',
+              name: 'uniqueBlock',
+              widget: 'object',
+              required: true,
+              fields:
+                [
+                  {
+                    label: 'Logos',
+                    name: 'logos',
+                    widget: 'object',
+                    required: true,
+                    fields:
+                      [
+                        {
+                          label: 'Creative Commons',
+                          name: 'cc',
+                          widget: 'image',
+                          allow_multiple: false,
+                          required: true,
+                        },
+                        {
+                          label: 'GNU GPL',
+                          name: 'gpl',
+                          widget: 'image',
+                          allow_multiple: false,
+                          required: true,
+                        },
+                      ],
+                  },
+                  {
+                    label: 'Links',
+                    label_singular: 'link',
+                    name: 'links',
+                    widget: 'list',
+                    summary: '{{fields.text}}',
+                    fields:
+                      [
+                        {
+                          label: 'Text',
+                          name: 'text',
+                          widget: 'string',
+                          required: true,
+                        },
+                        {
+                          label: 'URL',
+                          name: 'href',
+                          widget: 'string',
+                          required: true,
+                        },
+                        {
+                          label: 'Licença',
+                          name: 'license',
+                          widget: 'string',
+                          required: true,
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: 'Conteúdo',
+              name: 'body',
+              widget: 'markdown',
+              required: true,
+              buttons:
+                ['bold', 'italic', 'link', 'bulleted-list', 'numbered-list'],
+              editor_components: [],
+            }
