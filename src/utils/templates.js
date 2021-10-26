@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs/promises')
 
 module.exports.getTemplatesDirPath = () =>
-  path.resolve(__dirname, '..', 'src', 'templates')
+  path.resolve(__dirname, '..', 'templates')
 
 module.exports.getTemplates = async () => {
   const templatesDir = this.getTemplatesDirPath()

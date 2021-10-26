@@ -7,13 +7,13 @@ projectTechs:
     icon: /assets/uploads/icon-nodejs.png
   - name: typescript
     icon: /assets/uploads/icon-typescript.png
-links:
+projectLinks:
   app: https://github.com/mrocha98/antenas-front#readme
   sourceCode: https://github.com/mrocha98/garimpeiro-olx
-license:
+projectLicense:
   spdx: AGPL-3.0-or-later
   name: GNU Affero General Public License v3.0 or later
-images:
+projectImages:
   - src: /assets/uploads/help.png
     alt: listagem de comandos
     isFeatured: true

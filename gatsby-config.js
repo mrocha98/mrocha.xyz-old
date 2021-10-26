@@ -1,6 +1,7 @@
 require('dotenv').config()
 const colors = require('tailwindcss/colors')
-const { __DEV__, __PROD__ } = require('./utils/env')
+
+const { __DEV__, __PROD__ } = require('./src/utils/env')
 
 const siteUrl = process.env.SITE_META_SITE_URL || 'https://mrocha.xyz'
 const title = process.env.SITE_META_TITLE || 'mrocha.xyz'
@@ -85,6 +86,14 @@ const plugins = [
     __key: 'tags',
   },
   {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'uniqueBlocks',
+      path: `./content/unique`,
+    },
+    __key: 'uniqueBlocks',
+  },
+  {
     resolve: 'gatsby-plugin-manifest',
     options: {
       name: siteMetadata.title,
@@ -112,6 +121,7 @@ const plugins = [
   },
   'gatsby-plugin-sharp',
   'gatsby-transformer-sharp',
+  'gatsby-plugin-twitter',
   {
     resolve: 'gatsby-transformer-remark',
     options: {

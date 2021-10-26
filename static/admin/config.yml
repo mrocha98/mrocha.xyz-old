@@ -144,7 +144,7 @@ collections:
           label: 'Template Key',
           name: 'templateKey',
           widget: 'hidden',
-          default: 'category',
+          default: 'categoria',
           required: true,
         }
       - {
@@ -270,7 +270,7 @@ collections:
         }
       - {
           label: 'Links',
-          name: 'links',
+          name: 'projectLinks',
           widget: 'object',
           required: false,
           summary: '{{fields.app}} | {{fields.sourceCode}}',
@@ -292,7 +292,7 @@ collections:
         }
       - {
           label: 'Licença',
-          name: 'license',
+          name: 'projectLicense',
           widget: 'object',
           required: false,
           summary: '{{fields.name}} - {{fields.spdx}}',
@@ -317,7 +317,7 @@ collections:
         }
       - {
           label: 'Imagens',
-          name: 'images',
+          name: 'projectImages',
           widget: 'list',
           required: false,
           multiple: true,

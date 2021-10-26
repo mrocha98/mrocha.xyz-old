@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Seo } from '../components/Seo'
 
-export default function CategoryTemplate() {
+export default function CategoriaTemplate() {
   return (
     <>
       <Seo title="Categoria" />

@@ -17,12 +17,12 @@ projectTechs:
     icon: /assets/uploads/icon-mongodb.png
   - icon: /assets/uploads/icon-graphql.png
     name: graphql
-links:
+projectLinks:
   sourceCode: https://github.com/mrocha98/antenas-front
-license:
+projectLicense:
   name: MIT License
   spdx: MIT
-images:
+projectImages:
   - src: /assets/uploads/antenas-home.jpg
     isFeatured: true
     alt: tela inicial do projeto exibindo botões para logar ou criar conta

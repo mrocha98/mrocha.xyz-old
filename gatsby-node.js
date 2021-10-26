@@ -1,23 +1,28 @@
-const { getTemplates } = require('./utils/templates')
+const { getTemplates } = require('./src/utils/templates')
+const { SlugFactory } = require('./src/utils/slug-factory')
 
 /** @type {import('gatsby').GatsbyNode['onCreateNode']} */
 const onCreateNode = ({ node, getNode, actions }) => {
   const IS_INTERNAL_TYPE_MARKDOWN_REMARK =
     node.internal.type === 'MarkdownRemark'
-  const HAS_TEMPLATE_KEY = node.frontmatter?.templateKey?.length > 0
+
+  /** @type {string | null} */
+  const templateKey = node.frontmatter?.templateKey
+  const HAS_TEMPLATE_KEY = templateKey?.length > 0
 
   if (IS_INTERNAL_TYPE_MARKDOWN_REMARK && HAS_TEMPLATE_KEY) {
-    const { createFilePath } = require('gatsby-source-filesystem')
     const { createNodeField } = actions
 
-    const filePath = createFilePath({ node, getNode, basePath: 'pages' })
+    const IS_UNIQUE = !!node.frontmatter?.isUnique
+    const filePath = IS_UNIQUE
+      ? templateKey
+      : require('gatsby-source-filesystem').createFilePath({
+          node,
+          getNode,
+          basePath: 'pages',
+        })
 
-    const DATE_PART_LENGTH = '/YYYY-MM-DD-'.length
-    const SLASH_IN_END_LENGTH = -1 // credits: https://flaviocopes.com/how-to-remove-last-char-string-js/
-
-    // gets only the text after the date
-    // example: /2021-10-17-lorem/ -> lorem
-    const slug = filePath.slice(DATE_PART_LENGTH, SLASH_IN_END_LENGTH)
+    const slug = new SlugFactory(filePath).createSlug()
 
     createNodeField({
       node,
@@ -54,7 +59,10 @@ const createPages = async ({ actions, graphql, reporter }) => {
   `)
 
   if (result.errors) {
-    reporter.panicOnBuild('Error while running GraphQL query!')
+    reporter.panicOnBuild(
+      'Error while running create pages query!',
+      result.errors
+    )
     return
   }
 
