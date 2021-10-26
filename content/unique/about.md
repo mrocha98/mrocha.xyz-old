@@ -2,10 +2,10 @@
 templateKey: sobre
 isUnique: true
 uniqueBlock:
-  photo: /assets/uploads/author.jpg
+  photo: /assets/uploads/eu.jpeg
   social:
-      github: https://github.com/mrocha98
-      linkedin: https://linkedin.com/in/mrochasilva98
+    github: https://github.com/mrocha98
+    linkedin: https://linkedin.com/in/mrochasilva98
 ---
 Olá, me chamo Matheus Rocha, sou um desenvolvedor web do interior de São Paulo. Trabalho na área desde 2019.
 
